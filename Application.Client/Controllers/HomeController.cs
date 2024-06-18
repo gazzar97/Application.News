@@ -1,5 +1,6 @@
 using Application.Client.Models;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Diagnostics;
 
 namespace Application.Client.Controllers
@@ -15,6 +16,7 @@ namespace Application.Client.Controllers
 
         public IActionResult Index()
         {
+            Log.Information("hello-information");
             return View();
         }
 
