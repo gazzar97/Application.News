@@ -51,10 +51,19 @@ namespace Application.NewsAPI.Services
                 if (response.IsSuccessful)
                 {
                     var newsByCategory = JsonConvert.DeserializeObject<NewsByCategory>(response.Content);
-                    var articles = NewsByCategory.Parse(newsByCategory).Take(5).ToList();
+                    // Shuffle the list randomly
+                    var random = new Random();
+
+                    var articles = NewsByCategory.Parse(newsByCategory);
+
+                    var shuffledArticles = articles.OrderBy(x => random.Next()).ToList();
+
+                    // Take the first 5 elements from the shuffled list
+                    var selectedArticles = shuffledArticles.Take(5).ToList();
+
                     Log.Information("Successfully retrieved  Articles By Category. Count: {count}", newsByCategory.totalResults);
 
-                    return (newsByCategory.status, newsByCategory.totalResults, articles);
+                    return (newsByCategory.status, newsByCategory.totalResults, selectedArticles);
 
                 }
                 else
