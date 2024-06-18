@@ -1,4 +1,5 @@
-﻿using Application.NewsAPI.Models.Request;
+﻿using Application.Business_Logic.Contracts;
+using Application.NewsAPI.Models.Request;
 using Application.NewsAPI.Models.Response;
 using Application.NewsService.Contracts;
 using Application.NewsService.Models.Request;
@@ -18,6 +19,7 @@ namespace Application.NewsAPI.Services
     public class NewsService : INewsService
     {
         private readonly NewsGatewayConfig _newsGatewayConfig;
+        
         public NewsService()
         {
             var isDevelopment = true;//Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
@@ -27,19 +29,20 @@ namespace Application.NewsAPI.Services
                        .AddJsonFile(settingsFile, optional: true, reloadOnChange: true).Build();
 
             _newsGatewayConfig = _config.GetSection("NewsAPIGatewayConfig").Get<NewsGatewayConfig>();
-
+            
         }
 
-        public async Task<(string status, long totalResults, List<ArticleDTO> articles)> GetArticlesByCategory()
+        public async Task<(string status, long totalResults, List<ArticleDTO> articles)> GetArticlesByCategory(string category)
         {
             try
             {
                 var client = new RestClient(_newsGatewayConfig.NewsUrl);
                 var request = new RestRequest();
 
+                category = category == "Miscellaneous" ? "general" : category;
+
                 // Add query parameters
-                request.AddParameter("country", "us");
-                request.AddParameter("category", "business");
+                request.AddParameter("category", category);
                 request.AddParameter("apiKey", _newsGatewayConfig.NewsApiToken);
 
 
@@ -48,7 +51,7 @@ namespace Application.NewsAPI.Services
                 if (response.IsSuccessful)
                 {
                     var newsByCategory = JsonConvert.DeserializeObject<NewsByCategory>(response.Content);
-                    var articles = NewsByCategory.Parse(newsByCategory);
+                    var articles = NewsByCategory.Parse(newsByCategory).Take(5).ToList();
                     Log.Information("Successfully retrieved  Articles By Category. Count: {count}", newsByCategory.totalResults);
 
                     return (newsByCategory.status, newsByCategory.totalResults, articles);

@@ -26,7 +26,7 @@ namespace Application.NewsApi.Testing
             // Arrange
 
             // Act
-            var response = await _newsService.GetArticlesByCategory();
+            var response = await _newsService.GetArticlesByCategory("business");
 
 
             // Assert

@@ -10,6 +10,6 @@ namespace Application.NewsService.Contracts
 {
     public interface INewsService
     {
-        Task<(string status, long totalResults, List<ArticleDTO> articles)> GetArticlesByCategory();
+        Task<(string status, long totalResults, List<ArticleDTO> articles)> GetArticlesByCategory(string category);
     }
 }

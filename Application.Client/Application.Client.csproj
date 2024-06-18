@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.DAL\Application.DAL.csproj" />
+    <ProjectReference Include="..\Application.NewsAPI\Application.NewsAPI.csproj" />
   </ItemGroup>
 
 </Project>

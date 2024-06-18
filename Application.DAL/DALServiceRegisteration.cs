@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Business_Logic.Contracts;
+using Application.DAL.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -20,6 +22,8 @@ namespace Application.DAL
                 options.UseSqlServer(configuration.GetConnectionString("ApplicationNews"),
                 b => b.MigrationsAssembly(typeof(ApplicationDBContext).Assembly.FullName));
             });
+            services.AddScoped<IPageRepository, PageRepository>();
+            services.AddScoped<INewsRepository, NewsRepository>();
             return services;
         }
     }
