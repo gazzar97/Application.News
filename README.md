@@ -82,7 +82,7 @@ These steps ensure that the necessary configuration files are copied to the outp
 
 # Running the Tests
 
-To run integration tests for **Project Name**, follow these steps:
+To run integration tests for **News App**, follow these steps:
 
 1. **Locate the Tests Folder**:
    - Find the **Tests** folder in your solution.
