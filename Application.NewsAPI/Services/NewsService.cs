@@ -22,9 +22,8 @@ namespace Application.NewsAPI.Services
         
         public NewsService()
         {
-            var isDevelopment = true;//Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
-
-            var settingsFile = isDevelopment ? "newssettings.development.json" : "newssettings.json";
+            
+            var settingsFile = "newssettings.development.json";
             IConfiguration _config = new ConfigurationBuilder()
                        .AddJsonFile(settingsFile, optional: true, reloadOnChange: true).Build();
 

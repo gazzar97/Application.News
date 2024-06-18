@@ -1,7 +1,0 @@
-{
-  "NewsAPIGatewayConfig": {
-    "NewsUrl": "{{News_Url}}",
-    "NewsApiToken": "{{NewsApi_Token}}"
-  }
-  
-}
