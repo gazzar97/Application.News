@@ -9,13 +9,9 @@ Welcome to **News App**! This is a simple web application built using .NET Core 
 2. [Technologies Used](#technologies-used)
 3. [Architecture](#architecture)
 4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Configuration](#configuration)
-7. [Running the Tests](#running-the-tests)
-8. [Deployment](#deployment)
-9. [Contributing](#contributing)
-10. [License](#license)
-11. [Contact](#contact)
+5. [Configuration](#configuration)
+6. [Running the Tests](#running-the-tests)
+7. [Usage](#usage)
 
 ## Project Overview
 
@@ -40,3 +36,30 @@ The application is built following the Clean Architecture principles, which aim 
 - **Infrastructure Layer**: Manages data access, external APIs, and other infrastructure concerns.
 
 By enforcing clear boundaries between these layers, Clean Architecture ensures that changes in one part of the system have minimal impact on others. This makes the codebase more adaptable to changing requirements and easier to understand and test.
+
+# Installation
+
+To set up and run **Project Name**, follow these steps:
+
+1. **Build Solution**:
+   - Open the solution in Visual Studio.
+   - Build the solution to restore dependencies and compile the code.
+
+2. **Set Startup Project**:
+   - Navigate to the **Presentation** folder.
+   - Set the **Application.Client** project as the startup project.
+
+3. **Configure Database**:
+   - Open **appsettings.json** in the **Application.Client** project.
+   - Update the server name in the connection string to match your SQL Server instance.
+
+4. **Run Migrations**:
+   - Open **Package Manager Console** in Visual Studio (`Tools -> NuGet Package Manager -> Package Manager Console`).
+   - Ensure **Application.DAL** is selected as the default project in the console.
+   - Run the following commands to create and apply the initial database migration:
+     ```
+     add-migration init
+     update-database
+     ```
+
+These steps will initialize the project, configure the database connection, and apply the necessary migrations to set up the database schema.
