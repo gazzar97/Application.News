@@ -39,7 +39,7 @@ By enforcing clear boundaries between these layers, Clean Architecture ensures t
 
 # Installation
 
-To set up and run **Project Name**, follow these steps:
+To set up and run **News App**, follow these steps:
 
 1. **Build Solution**:
    - Open the solution in Visual Studio.
