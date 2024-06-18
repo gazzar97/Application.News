@@ -97,4 +97,21 @@ To run integration tests for **News App**, follow these steps:
 
 These steps will execute the integration tests for the application, ensuring that all functionalities are working correctly in a simulated environment.
 
+# Usage
+
+To use **News App**, follow these steps:
+
+1. **Rebuild the Solution**:
+   - Open the solution in Visual Studio.
+   - Build the solution to ensure all dependencies are resolved and the code is compiled.
+
+2. **Set Startup Project**:
+   - Navigate to the **Presentation** folder.
+   - Set the **Application.Client** project as the default startup project.
+
+3. **Start the Application**:
+   - Start the project by pressing the **Start** button (green play button) in Visual Studio.
+   - Once the application is running, navigate between pages to observe the output and functionality.
+
+These steps will allow you to start and interact with **News App** effectively, exploring its features and user interface.
 
