@@ -20,7 +20,7 @@ namespace Application.NewsAPI.Services
         private readonly NewsGatewayConfig _newsGatewayConfig;
         public NewsService()
         {
-            var isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+            var isDevelopment = true;//Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
 
             var settingsFile = isDevelopment ? "newssettings.development.json" : "newssettings.json";
             IConfiguration _config = new ConfigurationBuilder()
@@ -32,31 +32,39 @@ namespace Application.NewsAPI.Services
 
         public async Task<(string status, long totalResults, List<ArticleDTO> articles)> GetArticlesByCategory()
         {
-            var client = new RestClient(_newsGatewayConfig.NewsUrl);
-            var request = new RestRequest("top-headlines", Method.Get);
-            request.AddHeader("content-type", "application/json");
-
-            // Add query parameters
-            request.AddParameter("country", "us");
-            request.AddParameter("category", "business");
-            request.AddParameter("apiKey", _newsGatewayConfig.NewsApiToken);
-
-
-            // Execute the request and get the response
-            var response = await client.ExecuteAsync(request);
-            if (response.IsSuccessful)
+            try
             {
-                var newsByCategory = JsonConvert.DeserializeObject<NewsByCategory>(response.Content);
-                var articles =  NewsByCategory.Parse(newsByCategory);
-                Log.Information("Successfully retrieved  Articles By Category. Count: {count}", newsByCategory.totalResults);
+                var client = new RestClient(_newsGatewayConfig.NewsUrl);
+                var request = new RestRequest();
 
-                return (newsByCategory.status, newsByCategory.totalResults, articles);
+                // Add query parameters
+                request.AddParameter("country", "us");
+                request.AddParameter("category", "business");
+                request.AddParameter("apiKey", _newsGatewayConfig.NewsApiToken);
 
+
+                // Execute the request and get the response
+                var response = await client.ExecuteAsync(request);
+                if (response.IsSuccessful)
+                {
+                    var newsByCategory = JsonConvert.DeserializeObject<NewsByCategory>(response.Content);
+                    var articles = NewsByCategory.Parse(newsByCategory);
+                    Log.Information("Successfully retrieved  Articles By Category. Count: {count}", newsByCategory.totalResults);
+
+                    return (newsByCategory.status, newsByCategory.totalResults, articles);
+
+                }
+                else
+                {
+                    Log.Error("Failed to retrieve  Bus regions. Status Code: {statusCode}, Error: {errorContent}", response.StatusCode, response.Content);
+                    return ($"HTTP request error: {response.ErrorMessage}", 0, null);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Log.Error("Failed to retrieve  Bus regions. Status Code: {statusCode}, Error: {errorContent}", response.StatusCode, response.Content);
-                return ($"HTTP request error: {response.ErrorMessage}", 0, null);
+                Log.Error("Error in retrieving data:{message}", ex.Message);
+                return ($"HTTP request error", 0, null);
+
             }
         }
     }

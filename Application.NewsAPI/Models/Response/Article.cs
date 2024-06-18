@@ -8,7 +8,7 @@ namespace Application.NewsAPI.Models.Response
 {
     public class Article
     {
-        public Source Source { get; set; }
+        public Source source { get; set; }
         public string author { get; set; }
         public string title { get; set; }
         public string description { get; set; }
@@ -20,7 +20,7 @@ namespace Application.NewsAPI.Models.Response
     }
     public class Source
     {
-        public int id { get; set; }
+        public string? id { get; set; }
         public string name { get; set; }
     }
 }
