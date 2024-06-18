@@ -1,8 +1,7 @@
-# Project Name
-
+# Simple News Application
 ## Introduction
 
-Welcome to **Project Name**! This is a simple web application built using .NET Core 8. It follows the Clean Architecture principles to ensure a scalable, maintainable, and testable codebase. The application serves as a robust starting point for building modern web applications with a clear separation of concerns.
+Welcome to **News App**! This is a simple web application built using .NET Core 8. It follows the Clean Architecture principles to ensure a scalable, maintainable, and testable codebase. The application serves as a robust starting point for building modern web applications with a clear separation of concerns.
 
 ## Table of Contents
 
