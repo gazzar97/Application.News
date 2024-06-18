@@ -80,3 +80,21 @@ To configure **Project Name**, follow these steps:
 
 These steps ensure that the necessary configuration files are copied to the output directory, allowing the application to access and use them during runtime.
 
+# Running the Tests
+
+To run integration tests for **Project Name**, follow these steps:
+
+1. **Locate the Tests Folder**:
+   - Find the **Tests** folder in your solution.
+
+2. **Expand the Tests Project**:
+   - Expand the project named **Application.NewsAPI.Tests** within the **Tests** folder.
+
+3. **Run Tests**:
+   - Right-click on the **Application.NewsAPI.Tests** project name.
+   - Select **Run Tests** from the context menu to execute all tests.
+   - Alternatively, you can open **Test Explorer** in Visual Studio (`View tab -> Test Explorer`) and run individual test cases as needed.
+
+These steps will execute the integration tests for the application, ensuring that all functionalities are working correctly in a simulated environment.
+
+
