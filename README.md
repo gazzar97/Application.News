@@ -63,3 +63,20 @@ To set up and run **News App**, follow these steps:
      ```
 
 These steps will initialize the project, configure the database connection, and apply the necessary migrations to set up the database schema.
+
+# Configuration
+
+To configure **Project Name**, follow these steps:
+
+1. **Locate the Project**:
+   - Find the project named **Application.NewsAPI** in your solution.
+
+2. **Copy Configuration Files**:
+   - In the **Application.NewsAPI** project, locate the following files:
+     - `newssetting.development.json`
+     - `newssetting.json`
+   - Right-click on each file and select **Properties**.
+   - In the **Properties** window, set the **Copy to Output Directory** option to **Copy if newer**.
+
+These steps ensure that the necessary configuration files are copied to the output directory, allowing the application to access and use them during runtime.
+
