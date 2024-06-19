@@ -66,7 +66,7 @@ These steps will initialize the project, configure the database connection, and 
 
 # Configuration
 
-To configure **Project Name**, follow these steps:
+To configure **News App**, follow these steps:
 
 1. **Locate the Project**:
    - Find the project named **Application.NewsAPI** in your solution.
