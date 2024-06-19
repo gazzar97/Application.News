@@ -75,7 +75,7 @@ To configure **News App**, follow these steps:
    - In the **Application.NewsAPI** project, locate the following file:
      - `newssetting.development.json`
      
-   - Right-click on each file and select **Properties**.
+   - Right-click on the file and select **Properties**.
    - In the **Properties** window, set the **Copy to Output Directory** option to **Copy if newer** and then rebuild the project.
 
 These steps ensure that the necessary configuration files are copied to the output directory, allowing the application to access and use them during runtime.
